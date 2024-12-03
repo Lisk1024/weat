@@ -8,6 +8,8 @@ import sys
 
 from scrapy import xcfsearch, scrapyxcf
 user_db={}
+saved_recipe = ''
+recipe = ""
 def encrypt_password(password):
     return hashlib.sha256(password.encode()).hexdigest()
 
@@ -27,7 +29,7 @@ class LoginWindow(QMainWindow):
         password = self.ui.lineEdit_password.text()
 
         if username not in user_db:
-            self.ui.label_res.setText("用户未注册User not registered")
+            self.ui.label_res.setText("User not registered")
         else:
             encrypted_password = encrypt_password(password)
             if user_db[username] == encrypted_password:
@@ -61,19 +63,26 @@ class InterfaceWindow(QMainWindow):
         self.ui.pushButton_scrapy.clicked.connect(lambda: self.ui.stackedWidget.setCurrentIndex(0))
         self.ui.pushButton_ai.clicked.connect(lambda: self.ui.stackedWidget.setCurrentIndex(1))
         self.ui.pushButton_contact.clicked.connect(lambda : self.ui.stackedWidget.setCurrentIndex(2))
+        self.ui.pushButton_user.clicked.connect(lambda : self.ui.stackedWidget.setCurrentIndex(3))
         self.ui.Go.clicked.connect(self.scrapy)
         self.ui.Go_2.clicked.connect(self.ai)
+        self.ui.saveButton_Scrapy.clicked.connect(self.save)
+        self.ui.saveButton_Ai.clicked.connect(self.save)
+        self.ui.F5.clicked.connect(self.F5)
         self.show()
 
     def scrapy(self):
+        global recipe
         name = self.ui.input_scrapy.text()
         print(name)
         if not name:
             return None
         web = xcfsearch(name)
+        recipe = name+"\n"+scrapyxcf(web)
         self.ui.output_scrapy.setText(scrapyxcf(web))
 
     def ai(self):
+        global recipe
         str_ = self.ui.input_ai.text()
         if not str_:
             return None
@@ -83,7 +92,18 @@ class InterfaceWindow(QMainWindow):
         output = text_generator(str_ + "做法 用 料 ：", truncation=True, max_length=100, do_sample=True)
         output = str(output)
         output = output[20:-2]
+        recipe = str_+"\n"+output
         self.ui.output_ai.setText(output)
+
+    def save(self):
+        global recipe
+        global saved_recipe
+        saved_recipe = saved_recipe+"\n"+recipe
+
+    def F5(self):
+        global saved_recipe
+        self.ui.textBrowser.setText(saved_recipe)
+
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     win = LoginWindow()

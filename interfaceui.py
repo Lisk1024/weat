@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'interface.ui'
+# Form implementation generated from reading ui file 'interfaceui.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.10
 #
@@ -227,6 +227,9 @@ class Ui_MainWindow_inter(object):
 "background-color: rgba(0, 0, 0, 0);")
         self.input_scrapy.setText("")
         self.input_scrapy.setObjectName("input_scrapy")
+        self.saveButton_Scrapy = QtWidgets.QPushButton(self.frame_7)
+        self.saveButton_Scrapy.setGeometry(QtCore.QRect(440, 340, 75, 23))
+        self.saveButton_Scrapy.setObjectName("saveButton_Scrapy")
         self.verticalLayout_3.addWidget(self.frame_7)
         self.stackedWidget.addWidget(self.page)
         self.page_4 = QtWidgets.QWidget()
@@ -254,6 +257,9 @@ class Ui_MainWindow_inter(object):
 "background-color: rgba(0, 0, 0, 0);")
         self.input_ai.setText("")
         self.input_ai.setObjectName("input_ai")
+        self.saveButton_Ai = QtWidgets.QPushButton(self.frame_8)
+        self.saveButton_Ai.setGeometry(QtCore.QRect(530, 350, 75, 23))
+        self.saveButton_Ai.setObjectName("saveButton_Ai")
         self.stackedWidget.addWidget(self.page_4)
         self.page_3 = QtWidgets.QWidget()
         self.page_3.setObjectName("page_3")
@@ -289,6 +295,14 @@ class Ui_MainWindow_inter(object):
         self.stackedWidget.addWidget(self.page_3)
         self.page_2 = QtWidgets.QWidget()
         self.page_2.setObjectName("page_2")
+        self.textBrowser = QtWidgets.QTextBrowser(self.page_2)
+        self.textBrowser.setGeometry(QtCore.QRect(0, 10, 591, 401))
+        self.textBrowser.setObjectName("textBrowser")
+        self.F5 = QtWidgets.QPushButton(self.page_2)
+        self.F5.setGeometry(QtCore.QRect(590, 20, 31, 31))
+        self.F5.setStyleSheet("background-color: rgb(0, 174, 236);\n"
+"border-radius:5px")
+        self.F5.setObjectName("F5")
         self.stackedWidget.addWidget(self.page_2)
         self.horizontalLayout_5.addWidget(self.stackedWidget)
         self.horizontalLayout_4.addWidget(self.frame_6)
@@ -311,14 +325,17 @@ class Ui_MainWindow_inter(object):
         self.pushButton_contact.setText(_translate("MainWindow_inter", "Contact"))
         self.pushButton_user.setText(_translate("MainWindow_inter", "User   "))
         self.Go.setText(_translate("MainWindow_inter", "Go"))
-        self.label_2.setText(_translate("MainWindow_inter", "Scarpy"))
+        self.label_2.setText(_translate("MainWindow_inter", "Scrapy"))
         self.input_scrapy.setPlaceholderText(_translate("MainWindow_inter", "name:"))
+        self.saveButton_Scrapy.setText(_translate("MainWindow_inter", "save"))
         self.Go_2.setText(_translate("MainWindow_inter", "Go"))
         self.label.setText(_translate("MainWindow_inter", "AI"))
         self.input_ai.setPlaceholderText(_translate("MainWindow_inter", "name:"))
+        self.saveButton_Ai.setText(_translate("MainWindow_inter", "save"))
         self.label_3.setText(_translate("MainWindow_inter", "Contact us"))
         self.lineEdit_11.setPlaceholderText(_translate("MainWindow_inter", "Your name:"))
         self.lineEdit_12.setPlaceholderText(_translate("MainWindow_inter", "Email:"))
         self.lineEdit_13.setPlaceholderText(_translate("MainWindow_inter", "Message:"))
         self.pushButton.setText(_translate("MainWindow_inter", "Submit"))
+        self.F5.setText(_translate("MainWindow_inter", "↑↓"))
 import weat_rc
